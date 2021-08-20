@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    tools {maven "maven"}
     stages {
       stage('Maven clean and Install ') {
         steps {
