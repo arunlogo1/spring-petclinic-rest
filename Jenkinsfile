@@ -5,7 +5,7 @@ pipeline {
       stage('Maven clean and Install ') {
         steps {
           sh '''
-          mvn clean verify
+          mvn clean 
           mvn package
           '''     
         }
