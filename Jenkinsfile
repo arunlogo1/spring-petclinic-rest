@@ -5,8 +5,8 @@ pipeline {
       stage('Maven clean and Install ') {
         steps {
           sh '''
-          echo "Start packaging"
-          mvn package
+          ./mvnw clean"
+          ./mvnw install
           '''     
         }
       }
