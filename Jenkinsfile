@@ -12,6 +12,14 @@ pipeline {
         }
       } */
 
+      stage ('Publish build info') {
+            steps {
+                rtPublishBuildInfo (
+                    serverId: "artifactory-server"
+                )
+            }
+        }
+
       stage ('Upload file') {
             steps {
                 rtUpload (
