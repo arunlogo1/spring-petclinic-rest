@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {maven "maven"}
     stages {
-      /*
+      
       stage('Maven Build ') {
         steps {
           sh '''
@@ -10,7 +10,7 @@ pipeline {
           ./mvnw install
           '''     
         }
-      } */
+      } 
 
       stage ('Publish build info') {
             steps {
