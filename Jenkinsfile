@@ -11,6 +11,22 @@ pipeline {
         }
       }
 
+      stage ('Upload file') {
+            steps {
+                rtUpload (
+                    serverId: artifactory-server,
+                    spec: """{
+                            "files": [
+                                    {
+                                        "pattern": "target/spring-petclinic-rest-2.4.2.jar",
+                                        "target": "Spring-Petclinic-Rest-Local"
+                                    }
+                                ]
+                            }"""
+                )
+            }
+        }
+
 /*
       stage('Approval') {
         steps {
