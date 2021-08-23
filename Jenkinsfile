@@ -2,10 +2,10 @@ pipeline {
     agent any
     tools {maven "maven"}
     stages {
-      stage('Maven clean and Install ') {
+      stage('Maven Build ') {
         steps {
           sh '''
-          ./mvnw clean"
+          ./mvnw clean
           ./mvnw install
           '''     
         }
