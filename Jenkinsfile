@@ -27,7 +27,7 @@ pipeline {
                     spec: """{
                             "files": [
                                     {
-                                        "pattern": "target/spring-petclinic-rest-2.4.2.jar",
+                                        "pattern": "*.jar",
                                         "target": "Spring-Petclinic-Rest-Local"
                                     }
                                 ]
