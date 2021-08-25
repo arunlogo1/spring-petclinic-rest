@@ -1,6 +1,10 @@
 pipeline {
     agent any
     tools {maven "maven"}
+
+    environment {
+        Artifact_ID = ""
+    }
     stages {
       
       stage('Maven Build') {
@@ -19,12 +23,9 @@ pipeline {
                 filename=`echo *.jar | awk -F '.jar' '{print $1}'`
                 fileout="${filename}-${BUILD_NUMBER}.jar"
                 mv *.jar $fileout
+                env.Artifact_ID = $fileout
                 '''
                 }
-                script {
-                    env.TEST_VARIABLE = $fileout
-                }
-                echo "$env.TEST_VARIABLE"
 
             }
         }
