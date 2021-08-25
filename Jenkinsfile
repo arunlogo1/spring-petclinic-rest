@@ -3,7 +3,7 @@ pipeline {
     tools {maven "maven"}
     stages {
       
-      stage('Maven Build ') {
+      stage('Maven Build') {
         steps {
           sh '''
           ./mvnw clean
@@ -12,11 +12,15 @@ pipeline {
         }
       } 
 
-      stage ('Publish build info') {
+      stage ('Renaming the Artifact Version') {
             steps {
-                rtPublishBuildInfo (
-                    serverId: "artifactory-server"
-                )
+                dir('target') {
+                sh '''
+                filename=`echo *.jar | awk -F '.jar' '{print $1}'`
+                fileout="${filename}-${BUILD_NUMBER}.jar"
+                mv *.jar fileout
+                '''
+                }
             }
         }
 
