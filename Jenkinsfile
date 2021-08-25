@@ -3,7 +3,7 @@ pipeline {
     tools {maven "maven"}
 
     environment {
-        Artifact_ID = ""
+        Artifact_ID = "test"
     }
     stages {
       
@@ -23,7 +23,7 @@ pipeline {
                 filename=`echo *.jar | awk -F '.jar' '{print $1}'`
                 fileout="${filename}-${BUILD_NUMBER}.jar"
                 mv *.jar $fileout
-                env.Artifact_ID = $fileout
+                env.Artifact_ID= $fileout
                 '''
                 }
 
