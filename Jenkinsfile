@@ -21,6 +21,11 @@ pipeline {
                 mv *.jar $fileout
                 '''
                 }
+                script {
+                    env.TEST_VARIABLE = $fileout
+                }
+                echo "$env.TEST_VARIABLE"
+
             }
         }
 
