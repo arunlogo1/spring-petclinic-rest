@@ -48,22 +48,11 @@ pipeline {
             }
         }
 
-/*
-      stage('Approval') {
-        steps {
-          script {
-            def userInput = input(id: 'confirm', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ])
-          }
-        }
-      }
-*/
-      
-    }
      post { 
         success { 
             echo 'Job is success and triggering another pipeline'
             echo "Artifact id is : $env.Artifact_ID"
-            //build job: 'Nomad-Job-Arun' ,parameters: [string(name: 'ARTIFACT_REST', value: "$env.Artifact_ID")]
+            build job: 'Nomad-Job-Arun' ,parameters: [string(name: 'ARTIFACT_REST', value: "$env.Artifact_ID")]
         }
     }
 }
