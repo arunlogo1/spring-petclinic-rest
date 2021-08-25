@@ -48,6 +48,8 @@ pipeline {
             }
         }
 
+        }
+
      post { 
         success { 
             echo 'Job is success and triggering another pipeline'
@@ -55,5 +57,5 @@ pipeline {
             build job: 'Nomad-Job-Arun' ,parameters: [string(name: 'ARTIFACT_REST', value: "$env.Artifact_ID")]
         }
     }
-}
+
 }
