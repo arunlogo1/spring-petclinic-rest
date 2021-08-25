@@ -21,7 +21,7 @@ pipeline {
                 dir('target') {
                 sh '''
                 filename=`echo *.jar | awk -F '.jar' '{print $1}'`
-                set fileout="${filename}-${BUILD_NUMBER}.jar"
+                export fileout="${filename}-${BUILD_NUMBER}.jar"
                 mv *.jar $fileout
                 '''
                 }
