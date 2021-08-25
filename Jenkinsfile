@@ -21,11 +21,11 @@ pipeline {
                 dir('target') {
                 sh '''
                 filename=`echo *.jar | awk -F '.jar' '{print $1}'`
-                fileout="${filename}-${BUILD_NUMBER}.jar"
+                set fileout="${filename}-${BUILD_NUMBER}.jar"
                 mv *.jar $fileout
-                env.Artifact_ID= $fileout
                 '''
                 }
+                echo "$fileout"
 
             }
         }
