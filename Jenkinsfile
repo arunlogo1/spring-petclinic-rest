@@ -2,9 +2,7 @@ pipeline {
     agent any
     tools {maven "maven"}
 
-    environment {
-        Artifact_ID = "test"
-    }
+
     stages {
       
       stage('Maven Build') {
@@ -25,13 +23,17 @@ pipeline {
                 mv *.jar $fileout
                 '''
                 }
-                echo "$fileout"
 
+               script {
+                    env.Artifact_ID = sh(script: 'ls *.jar', returnStdout: true).trim()
+                    
+                    }
             }
         }
 
       stage ('Upload file') {
             steps {
+                echo "Artifact id is : $env.Artifact_ID"
                 rtUpload (
                     serverId: "artifactory-server",
                     spec: """{
