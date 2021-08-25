@@ -22,12 +22,13 @@ pipeline {
                 export fileout="${filename}-${BUILD_NUMBER}.jar"
                 mv *.jar $fileout
                 '''
-                }
-
-               script {
+                script {
                     env.Artifact_ID = sh(script: 'ls *.jar', returnStdout: true).trim()
                     
                     }
+                }
+
+               
             }
         }
 
