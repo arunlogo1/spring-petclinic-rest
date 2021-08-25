@@ -19,6 +19,7 @@ pipeline {
                 filename=`echo *.jar | awk -F '.jar' '{print $1}'`
                 fileout="${filename}-${BUILD_NUMBER}.jar"
                 mv *.jar fileout
+                ls
                 '''
                 }
             }
